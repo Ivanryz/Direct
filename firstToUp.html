@@ -1,0 +1,14 @@
+Sub firstToUp()
+Dim x, i&, c&
+x = Selection.Value
+If IsArray(x) Then
+    For i = 1 To UBound(x, 1)
+        For c = 1 To UBound(x, 2)
+            x(i, c) = UCase(Left(Trim(x(i, c)), 1)) & Mid(Trim(x(i, c)), 2)
+        Next
+    Next
+    Selection.Resize(UBound(x, 1), UBound(x, 2)) = x
+Else
+    Selection.Value = UCase(Left(Trim(x), 1)) & Mid(Trim(x), 2)
+End If
+End Sub
